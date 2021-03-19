@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 class IconUtil {
 
     fun drawableToBitmap(@DrawableRes drawableRes: Int, context: Context): Bitmap {
-//        if (drawable == null) return Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
 
         val drawable = ContextCompat.getDrawable(
             context,

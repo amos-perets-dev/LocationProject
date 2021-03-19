@@ -8,7 +8,7 @@ import com.example.locationproject.network.base.BaseNetworkManager
 import com.example.locationproject.network.base.IBaseNetworkManager
 import com.example.locationproject.network.api.PlacesApi
 import com.example.locationproject.manager.location.ILocationManager
-import com.example.locationproject.util.IPermissionsUtil
+import com.example.locationproject.util.permission.IPermissionsUtil
 import com.example.locationproject.manager.location.LocationManager
 import com.example.locationproject.manager.map.IMapManager
 import com.example.locationproject.manager.map.MapManager
@@ -20,7 +20,7 @@ import com.example.locationproject.network.error.HandleNetworkError
 import com.example.locationproject.network.error.IHandleNetworkError
 import com.example.locationproject.repository.IPlacesRepository
 import com.example.locationproject.repository.PlacesRepository
-import com.example.locationproject.util.PermissionsUtil
+import com.example.locationproject.util.permission.PermissionsUtil
 import com.example.locationproject.screens.map.MapViewModel
 import com.example.locationproject.util.IconUtil
 import com.google.android.gms.location.LocationServices
@@ -106,7 +106,8 @@ class ModulesMap {
                     MapElementLayer(),
                     iconUtil.drawableToBitmap(R.drawable.ic_placeholder, context),
                     iconUtil.drawableToBitmap(R.drawable.ic_place, context),
-                    get()
+                    get(),
+                    iconUtil.drawableToBitmap(R.drawable.ic_def_pin, context)
                 )
             }
         }

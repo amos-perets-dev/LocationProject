@@ -1,4 +1,4 @@
-package com.example.locationproject.util
+package com.example.locationproject.util.permission
 
 import android.content.Context
 import com.karumi.dexter.Dexter
@@ -6,7 +6,8 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
 import io.reactivex.Single
 
-class PermissionsUtil  : IPermissionsUtil {
+class PermissionsUtil  :
+    IPermissionsUtil {
 
     override fun isPermissionGranted(context: Context, vararg permissionsNames: String): Single<Boolean> {
         return Single.create<Boolean> { emitter ->

@@ -25,7 +25,7 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_DWELL) {
 
             val requestId = geofencingEvent.triggeringGeofences.firstOrNull()?.requestId
-            Log.d("TEST_GAME", "GeofenceBroadcastReceiver requestId: $requestId")
+
 
             if (requestId != null) {
                 placesRepository.setActivePlace(requestId)

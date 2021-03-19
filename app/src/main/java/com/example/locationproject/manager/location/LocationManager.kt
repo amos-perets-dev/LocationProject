@@ -17,7 +17,7 @@ import com.example.locationproject.manager.places.IPlacesNetworkManager
 import com.example.locationproject.network.data.PlacesDataResponse
 import com.example.locationproject.network.error.IHandleNetworkError
 import com.example.locationproject.repository.IPlacesRepository
-import com.example.locationproject.util.IPermissionsUtil
+import com.example.locationproject.util.permission.IPermissionsUtil
 import com.google.android.gms.location.*
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -80,12 +80,11 @@ class LocationManager(
                         return@subscribe
                     }
 
-                    Log.d("TEST_GAME", "locationManager?.requestLocationUpdates")
 
                     requestLocationUpdates()
 
                 }, { error ->
-                    Log.d("TEST_GAME", "subscribe error: ${error.message}")
+
                 })
         )
     }
@@ -98,10 +97,6 @@ class LocationManager(
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 if (location == null) return@addOnSuccessListener
-                Log.d(
-                    "TEST_GAME",
-                    "addOnSuccessListener: ${location?.latitude}, accuracy: ${location?.accuracy}"
-                )
 
                 notifyLocationChange(location)
 
@@ -185,7 +180,7 @@ class LocationManager(
                 .subscribe((this::createGeofencingRequest), {
                     notifyStateChange(
                         DataLocationResult.ErrorMsg.NetworkError(
-                            context.getString(handleNetworkError.generateErrorID(throwable = it)) + "${it.message}"
+                            context.getString(handleNetworkError.generateErrorID(throwable = it))
                         )
                     )
                 })

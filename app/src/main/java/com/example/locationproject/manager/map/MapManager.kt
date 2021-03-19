@@ -13,8 +13,9 @@ class MapManager(
     private val pinLayer: MapElementLayer,
     private val myLocationIcon: Bitmap,
     private val place: Bitmap,
-    private val mapProjectConfiguration: IMapProjectConfiguration
-) : IMapManager {
+    private val mapProjectConfiguration: IMapProjectConfiguration,
+    private val defIcon: Bitmap
+    ) : IMapManager {
 
     private val pinLayerElements = pinLayer.elements
 
@@ -49,7 +50,10 @@ class MapManager(
 
                 if (indexPlacesInRange.contains(index)) {
                     (mapIcon as MapIcon).image = MapImage(place)
+                } else {
+                    (mapIcon as MapIcon).image = MapImage(defIcon)
                 }
+
 
                 pinLayerElements.add(mapIcon)
             }
@@ -73,6 +77,8 @@ class MapManager(
 
                 if (indexPlacesInRange.contains(index)) {
                     mapIconCast.image = MapImage(place)
+                } else {
+                    mapIconCast.image = MapImage(defIcon)
                 }
 
             }
@@ -102,7 +108,7 @@ class MapManager(
             if (bearing < 0) bearing += 360
 
             if (bearing < mapProjectConfiguration.getLimitDegrees()) {
-                Log.d("TEST_GAME", "2 name: ${placeData.placeName}, brng: $bearing")
+
                 indexPlacesInRange.add(index)
             }
 

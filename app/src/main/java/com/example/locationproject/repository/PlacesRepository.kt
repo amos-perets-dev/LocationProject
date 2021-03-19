@@ -34,7 +34,7 @@ class PlacesRepository(
     override fun setActivePlace(placeID: String) {
 
         val name = locations[placeID] ?: ""
-        Log.d("TEST_GAME", "PlacesRepository setActivePlace name: $name")
+
 
         activePlace.onNext(name)
     }

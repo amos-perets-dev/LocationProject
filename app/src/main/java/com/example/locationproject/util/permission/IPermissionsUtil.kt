@@ -1,4 +1,4 @@
-package com.example.locationproject.util
+package com.example.locationproject.util.permission
 
 import android.content.Context
 import io.reactivex.Single
